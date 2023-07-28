@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\StudentsController;
+use App\Models\ApiStudents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // route:: get('/hello',function(){
 //     return "hello";
 // });
-Route::get("employees",[DemoController::class,"index"]);
+// Route::get("/employees",[DemoController::class,"index"]);
+
+
+//this is post method below:-
+
+Route::post('/students',[StudentsController::class,'CreateStudents']);
+Route::get('/getstudents',[StudentsController::class,'Getstudents']);
 

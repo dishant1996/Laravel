@@ -18,21 +18,21 @@ class DemoController extends Controller
     //     return view ('welcome');
     // }
 
-    // public function userw(string $id, $city){
-    //     return response()->json(["id"=>1,"city"=>$city]);
-    //      //id is key value city like assocaiative array
-    // }
+    //public function userw(Request $req){
+//         $data=$req->all();
 
-    // public function showblog(){
-    //     return view ('blog');
+//         return view('welcome',['name'=> $req->name,'city'=>$data['city']]);
 
-public function index(){
-    $employee = Employees::all();
-    return response()->json(["employees"=>$employee]);
+//         // return response()->json(["id"=>1,"city"=>$city]);
+//          //id is key value city like assocaiative array
+//     }
 
-}
-}
-//connnecting table in showing output
+//     // public function showblog(){
+//     //     return view ('blog');
+
+// public function index(){
+//     $employee = Employees::all();
+//     return response()->json(["employees"=>$employee]);
 
 
 
