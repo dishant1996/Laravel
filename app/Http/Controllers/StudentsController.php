@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use illuminate\support\facades\Validator;
+use Illuminate\support\facades\Validator;
 use PhpParser\Node\Stmt\Return_;
 
 
@@ -61,4 +61,26 @@ if($validator->fails())
 
         return response()->json(['message' => 'student created succesfully']);
         }
+    
+
+    public function Getid($id){
+        $student = Student::find('id', $id);
+        return response()->json($student);
     }
+    public function updatename(Request $req,$fname){
+        $student = Student::where('fname', $fname)->first();
+     
+        if (!$student) {
+            return response()->json(['message' => 'student not found'], 404);
+        }
+     
+        $student->id = $req->input('id');
+        $student->fname = $req->input('fname');
+        $student->Lname = $req->input('Lname');
+        $student->email = $req->input('email');
+        $student->designation = $req->input('designation');
+        $student->save();
+
+        return response()->json($student);
+}
+}
