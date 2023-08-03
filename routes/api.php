@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Newcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +38,9 @@ Route::post('/val',[StudentsController::class,'ValidateStudents']);
 Route::get('/getid/{id}',[ApiController::class,'Getid']);
 Route::put('/updatename/{fname}',[ApiController::class,'updatename']);
 
-Route::post('/register',[UserController::class,'register']);
-Route::post('/login',[UserController::class,'login']);
-Route::post('/profile',[UserController::class,'profile']);
-Route::post('/logout',[UserController::class,'logout']);
+Route::post('register', [Newcontroller::class, 'register']);
+Route::post('login', [Newcontroller::class, 'login']);
+Route::post('/profile',[Newcontroller::class,'profile']);
+Route::post('/logout',[Newcontroller::class,'logout']);
 
 

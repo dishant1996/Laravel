@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\support\facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\FileIterator\Factory;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -37,34 +38,33 @@ class UserController extends Controller
     } 
     //for login
     public function login(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|string|email',
+        'password' => 'required|string|max:100'
+    ]);
 
-    {
-        $validator = Validator::make($request->all(),[
-        
-            'email'=>'required|email|string',
-            'password'=>'required|string|min:6' 
-    
-           ]);
-
-           if($validator->fails())
-           {
-            return response()->json($validator->errors(),400);
-           }
-           if(!$token = auth()->attempt($validator->validated()))
-           {
-            return response()->json(['error'=> 'unauthorized',401]);
-           }
-           return $this->respondwithtoken($token);
+    if ($validator->fails()) {
+        return response()->json($validator->errors(), 400);
     }
-            public function respondwithtoken($token)
-            {
-                return response()->json([
-                    'access_token'=> $token,
-                    'token_type'=> 'bearer',
-                    'expires_in' =>auth()->factory()->getTT()*60,
-                    'user'=>auth()->user()
-                ]);
-            }
+
+    if (!$token = Auth()->attempt($validator->validated())) {
+        return response()->json(['error' => 'Invalid credentials'], 401);
+    }
+
+    return $this->respondWithToken($token);
+}
+
+public function respondWithToken($token)
+{
+    return response()->json([
+        'access_token' => $token,
+        'token_type' => 'bearer',
+        'expires_in' => auth()->factory()->getTTL() * 60,
+        'user' => auth()->user()
+    ]);
+}
+
             // public function login(Request $request)
     // {
     //     $request->validate([
