@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\Validator;
 use PhpParser\Node\Stmt\Return_;
@@ -14,7 +15,11 @@ use PhpParser\Node\Stmt\Return_;
 class StudentsController extends Controller
 {
   
-    
+    public function gethello(Request $req){
+
+
+        return response()->json(['Message' => 'helloworld']);
+    }
     public function Createstudents(Request $req){
        
 

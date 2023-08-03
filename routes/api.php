@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Newcontroller;
-
+use App\Http\Middleware\webguard;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,10 +37,12 @@ Route::get('/getstudent',[StudentsController::class,'Getstudents']);
 Route::post('/val',[StudentsController::class,'ValidateStudents']);
 Route::get('/getid/{id}',[ApiController::class,'Getid']);
 Route::put('/updatename/{fname}',[ApiController::class,'updatename']);
+Route::get('/hello',[StudentsController::class,'gethello']);
 
 Route::post('register', [Newcontroller::class, 'register']);
 Route::post('login', [Newcontroller::class, 'login']);
 Route::post('/profile',[Newcontroller::class,'profile']);
 Route::post('/logout',[Newcontroller::class,'logout']);
+
 
 

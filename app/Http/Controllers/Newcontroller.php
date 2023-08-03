@@ -18,7 +18,8 @@ class Newcontroller extends Controller
     {
        $validator = Validator::make($request->all(),[
         'name'=>'required|string|min:2|max:100',
-        'email'=> 'required| string|email|max:100|unique:users', 
+        'email'=> 'required| string|email|max:100|unique:users',
+        'age'=> 'required| string|max:2', 
         'password'=> 'required| string|max:100|confirmed'  
 
        ]);
@@ -29,6 +30,7 @@ class Newcontroller extends Controller
        $user = User::create([
         'name'=>$request->name,
         'email'=>$request->email, 
+        'age'=>$request->age,
         'password'=>Hash::make($request->password), 
        ]);
         

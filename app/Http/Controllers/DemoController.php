@@ -9,21 +9,22 @@ class DemoController extends Controller
 //creates path with help of function
 
 {
-    //public function welcomew(string $new){
-        //return view ('welcome',compact('new'));}
-     
-      //compact passes both id n key with same name
+    public function welcomew(string $new){
+        return view ('welcome',compact('new'));}
+    }
+    //   //compact passes both id n key with same name
 
-    // public function welcomew(){
-    //     return view ('welcome');
+    // // public function welcomew(){
+    // //     return view ('welcome');
+    // // }
+
+    // public function userw(Request $req){
+    //     $data=$req->all();
+
+    //     return view('welcome',['name'=> $req->name,'city'=>$data['city']]);}
     // }
 
-    //public function userw(Request $req){
-//         $data=$req->all();
-
-//         return view('welcome',['name'=> $req->name,'city'=>$data['city']]);
-
-//         // return response()->json(["id"=>1,"city"=>$city]);
+        // return response()->json(["id"=>1,"city"=>$city]);
 //          //id is key value city like assocaiative array
 //     }
 
